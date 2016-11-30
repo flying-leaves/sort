@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		
+		var arr = [23,1,33,55,199,34,5,56,55,5,199];
+
+		function quickSort(arr){
+			//当传进来的数组只有1个值的时候，就不用比较了，直接返回
+			if(arr.length <= 1){
+				return arr;
+			}
+
+//			var middleIndex = Math.floor(arr.length/2);
+			var middleValue = arr.splice(0,1)[0];
+
+			//left是存放的比中间的值小的数字
+			var left = [];
+			//right是存放的比中间的值大的数字
+			var right = [];
+
+			for(var i=0;i<arr.length;i++){
+				if(arr[i] > middleValue){
+					right.push(arr[i])
+				}else{
+					left.push(arr[i]);
+				}
+			};
+
+			//concat拼接数组的方法
+			return quickSort(left).concat(middleValue,quickSort(right));
+
+		};
+
+		console.log(quickSort(arr));
+
+
+	</script>
+</body>
+</html>
